@@ -14,6 +14,29 @@ class game{
 
         //create bow
         this.bow = new bow(this);
+
+        this.arrow = new arrow(this);
+
+        this.listenMouseEvent();
+    }
+
+    getMousePos(evt){
+        var rect = this.canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+          };
+    }
+    listenMouseEvent(){
+        this.canvas.addEventListener("mousemove", (event)=>{
+            let mousePos = this.getMousePos(event);
+            //draw arrow
+            this.arrow.setMousePos(mousePos);
+        });
+        this.canvas.addEventListener("mouseclick", (event)=>{
+            let mousePos = this.getMousePos(event);
+            
+        });
     }
     loop(){
         this.update();
@@ -24,6 +47,8 @@ class game{
         this.bow.update();
     }
     draw(){
+        this.context.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+        this.arrow.draw();
         this.bow.draw();
     }
 }
