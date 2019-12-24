@@ -1,0 +1,6 @@
+const GAME_WIDTH = 424;
+const GAME_HEIGHT = 800;
+const EGG_START_X = 212;
+const EGG_START_Y = 768;
+const EGG_RADIUS = 32;
+const EGG_DIAMETTER = 64;
