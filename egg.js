@@ -14,8 +14,13 @@ class egg{
     }
 
     calculatePos(){
-        this.x = EGG_DIAMETTER * this.col;
-        this.y = ROw_HEIGHT * this.row;
+        if(this.row%2==0){
+            this.x = EGG_DIAMETTER * this.col;
+        }else{
+            this.x = EGG_RADIUS + EGG_DIAMETTER * this.col;
+        }
+        this.y = this.game.grid.y - ROW_HEIGHT * this.row;
+
     }
     loadImage(){
         this.image = new Image;
@@ -32,7 +37,8 @@ class egg{
     }
 
     update(){
-
+        this.calculatePos();
+        this.draw();
     }
 
     draw(){
