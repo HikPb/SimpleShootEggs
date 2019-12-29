@@ -4,11 +4,10 @@
 }
 
 body{
-    background: black url("image/background.jpg") no-repeat center top;
+    background: black url("image/background.png") no-repeat center top;
 }
 
 canvas{
-    border: 1px solid white;
     margin: 0px auto;
     display: block;
 }

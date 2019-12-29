@@ -12,6 +12,8 @@ class game{
         this.canvas.height = GAME_HEIGHT;
         document.body.appendChild(this.canvas);
 
+        //create grid
+        this.grid = new grid(this);
         //create bow
         this.bow = new bow(this);
 
@@ -33,9 +35,10 @@ class game{
             //draw arrow
             this.arrow.setMousePos(mousePos);
         });
-        this.canvas.addEventListener("mouseclick", (event)=>{
+        this.canvas.addEventListener("click", (event)=>{
             let mousePos = this.getMousePos(event);
-            
+            console.log(mousePos);
+            this.bow.fire(mousePos);
         });
     }
     loop(){
@@ -45,11 +48,13 @@ class game{
     }
     update(){
         this.bow.update();
+        this.grid.update();
     }
     draw(){
         this.context.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
         this.arrow.draw();
         this.bow.draw();
+        this.grid.draw();
     }
 }
 
